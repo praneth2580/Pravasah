@@ -20,6 +20,10 @@ interface ExpenseDao {
     suspend fun insertExpenseTravellerCrossRefs(crossRefs: List<ExpenseTravellerCrossRef>)
 
     @Transaction
+    @Query("SELECT * FROM expenses order by expenseId desc")
+    fun getAll(): Flow<List<Expense>>
+
+    @Transaction
     @Query("SELECT * FROM expenses WHERE tripId = :tripId")
     fun getExpensesWithTravellersForTrip(tripId: Int): Flow<List<ExpenseWithTravellers>>
 }

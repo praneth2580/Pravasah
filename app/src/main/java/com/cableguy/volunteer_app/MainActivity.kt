@@ -25,6 +25,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.cableguy.volunteer_app.nav.screens.ExpenseScreen
 import com.cableguy.volunteer_app.nav.screens.TripScreen
 import com.cableguy.volunteer_app.room.LocalDatabase
 
@@ -116,7 +117,9 @@ fun MainLayout(database: LocalDatabase, modifier: Modifier = Modifier) {
                  modifier = Modifier.padding(innerPadding)
              )
          } else {
-             Home(
+             pageTitle = "Travel Ledger"
+             ExpenseScreen(
+                 database = database,
                  modifier = Modifier.padding(innerPadding)
              )
          }
@@ -125,10 +128,7 @@ fun MainLayout(database: LocalDatabase, modifier: Modifier = Modifier) {
 
 @Composable
 fun Home( modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello",
-        modifier = modifier
-    )
+
 }
 
 @Preview(showBackground = true)

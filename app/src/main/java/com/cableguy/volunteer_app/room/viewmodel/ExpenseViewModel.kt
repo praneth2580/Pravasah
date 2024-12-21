@@ -6,9 +6,12 @@ import com.cableguy.volunteer_app.room.dao.ExpenseDao
 import com.cableguy.volunteer_app.room.entity.Expense
 import com.cableguy.volunteer_app.room.entity.ExpenseTravellerCrossRef
 import com.cableguy.volunteer_app.room.entity.Traveller
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class ExpenseViewModel(private val expenseDao: ExpenseDao) : ViewModel() {
+
+    val allExpenses: Flow<List<Expense>> = expenseDao.getAll()
 
     fun addExpense(tripId: Int, description: String, amount: Double, selectedTravellers: List<Traveller>) {
         viewModelScope.launch {

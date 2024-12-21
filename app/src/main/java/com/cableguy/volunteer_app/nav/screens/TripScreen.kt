@@ -14,7 +14,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
@@ -38,7 +37,7 @@ fun TripScreen(
     val travelerViewModel: TravellerViewModel = viewModel(factory = TravellerViewModelFactory(travellerDao))
     val travellers by travelerViewModel.allTravellers.collectAsState(initial = emptyList())
 
-    val tripDao = remember { database.travellerTripDao() }
+    val tripDao = remember { database.tripDao() }
     val viewModel: TripViewModel = viewModel(factory = TripViewModelFactory(tripDao))
     val trips by viewModel.allTrips.collectAsState(initial = emptyList())
 

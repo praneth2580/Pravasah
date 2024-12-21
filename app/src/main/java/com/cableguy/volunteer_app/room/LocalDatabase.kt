@@ -4,16 +4,20 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.cableguy.volunteer_app.room.dao.ExpenseDao
 import com.cableguy.volunteer_app.room.dao.TravellerDao
 import com.cableguy.volunteer_app.room.dao.TripDao
+import com.cableguy.volunteer_app.room.entity.Expense
+import com.cableguy.volunteer_app.room.entity.ExpenseTravellerCrossRef
 import com.cableguy.volunteer_app.room.entity.Traveller
 import com.cableguy.volunteer_app.room.entity.TravellerTripCrossRef
 import com.cableguy.volunteer_app.room.entity.Trip
 
-@Database(entities = [Traveller::class, Trip::class, TravellerTripCrossRef::class], version = 3, exportSchema = false)
+@Database(entities = [Traveller::class, Trip::class, TravellerTripCrossRef::class, Expense::class, ExpenseTravellerCrossRef::class], version = 3, exportSchema = false)
 abstract class LocalDatabase : RoomDatabase() {
     abstract fun travellerDao(): TravellerDao
-    abstract fun travellerTripDao(): TripDao
+    abstract fun tripDao(): TripDao
+    abstract fun expenseDao(): ExpenseDao
 
     companion object {
         @Volatile
